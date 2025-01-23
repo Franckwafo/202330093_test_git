@@ -57,7 +57,7 @@ public class JungleApplication extends Application {
         }
 
         // Dessiner un éléphant
-        drawElephant(gc, 400, height - 200);
+        drawElephant(gc, height - 200);
 
         // Ajouter des oiseaux
         for (int i = 0; i < 20; i++) {
@@ -69,6 +69,12 @@ public class JungleApplication extends Application {
         // Ajouter des enfants
         drawChild(gc, 300, height - 190);
         drawChild(gc, 500, height - 190);
+
+        // Dessiner un lac tout à droite
+        drawLake(gc, width - 150, height - 100);
+
+        // Dessiner un bateau sur le lac tout à droite
+        drawBoat(gc, width - 100, height - 120);
     }
 
     private void drawPalmTree(GraphicsContext gc, double x, double y) {
@@ -105,27 +111,27 @@ public class JungleApplication extends Application {
         gc.fillOval(x, y + 3, 2, 2);
     }
 
-    private void drawElephant(GraphicsContext gc, double x, double y) {
+    private void drawElephant(GraphicsContext gc, double y) {
         // Dessiner le corps de l'éléphant
         gc.setFill(Color.GRAY);
-        gc.fillOval(x, y, 120, 60);
+        gc.fillOval(400, y, 120, 60);
 
         // Dessiner la tête
-        gc.fillOval(x - 40, y + 10, 50, 40);
+        gc.fillOval((double) 400 - 40, y + 10, 50, 40);
 
         // Dessiner les pattes
-        gc.fillRect(x + 10, y + 50, 20, 40);
-        gc.fillRect(x + 90, y + 50, 20, 40);
+        gc.fillRect((double) 400 + 10, y + 50, 20, 40);
+        gc.fillRect((double) 400 + 90, y + 50, 20, 40);
 
         // Dessiner la trompe
-        gc.fillRect(x - 40, y + 30, 10, 30);
+        gc.fillRect((double) 400 - 40, y + 30, 10, 30);
 
         // Dessiner les oreilles
-        gc.fillOval(x - 50, y, 30, 30);
+        gc.fillOval((double) 400 - 50, y, 30, 30);
 
         // Dessiner les yeux
         gc.setFill(Color.BLACK);
-        gc.fillOval(x - 30, y + 20, 5, 5);
+        gc.fillOval((double) 400 - 30, y + 20, 5, 5);
     }
 
     private void drawChild(GraphicsContext gc, double x, double y) {
@@ -152,6 +158,22 @@ public class JungleApplication extends Application {
         gc.setFill(Color.BLACK);
         gc.fillOval(x + 8, y - 5, 2, 2);
         gc.fillOval(x + 10, y - 5, 2, 2);
+    }
+
+    private void drawLake(GraphicsContext gc, double x, double y) {
+        // Dessiner le lac
+        gc.setFill(Color.BLUE);
+        gc.fillOval(x - 100, y - 50, 200, 100);
+    }
+
+    private void drawBoat(GraphicsContext gc, double x, double y) {
+        // Dessiner le corps du bateau
+        gc.setFill(Color.BROWN);
+        gc.fillRect(x, y, 50, 20);
+
+        // Dessiner la voile
+        gc.setFill(Color.WHITE);
+        gc.fillPolygon(new double[]{x + 25, x + 10, x + 40}, new double[]{y, y - 30, y - 30}, 3);
     }
 
     public static void main(String[] args) {
