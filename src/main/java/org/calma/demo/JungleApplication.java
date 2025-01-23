@@ -58,6 +58,12 @@ public class JungleApplication extends Application {
 
         // Dessiner un éléphant
         drawElephant(gc, 400, height - 200);
+
+        for (int i = 0; i < 20; i++) {
+            double x = Math.random() * width;
+            double y = height - 550 + Math.random() * 50;
+            drawBird(gc, x, y);
+        }
     }
 
     private void drawPalmTree(GraphicsContext gc, double x, double y) {
@@ -70,6 +76,28 @@ public class JungleApplication extends Application {
         for (int i = 0; i < 5; i++) {
             gc.fillArc(x - 40, y - 40, 100, 50, i * 30, 30, javafx.scene.shape.ArcType.ROUND);
         }
+    }
+
+    private void drawBird(GraphicsContext gc, double x, double y) {
+        // Body
+        gc.setFill(Color.ORANGE);
+        gc.fillOval(x, y, 20, 10);
+
+        // Wing
+        gc.setFill(Color.BROWN);
+        gc.fillPolygon(new double[]{x + 5, x + 20, x + 10, x}, new double[]{y, y, y - 5, y}, 4);
+
+        // Tail
+        gc.setFill(Color.BLUE);
+        gc.fillRect(x + 10, y + 5, 5, 5);
+
+        // Head
+        gc.setFill(Color.YELLOW);
+        gc.fillOval(x - 5, y, 10, 10);
+
+        // Eye
+        gc.setFill(Color.BLACK);
+        gc.fillOval(x, y + 3, 2, 2);
     }
 
     private void drawElephant(GraphicsContext gc, double x, double y) {
