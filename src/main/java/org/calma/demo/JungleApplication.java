@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class JungleApplication extends Application {
@@ -45,7 +44,7 @@ public class JungleApplication extends Application {
         gc.setFill(Color.YELLOW);
         gc.fillOval(width - 150, 50, 100, 100);
 
-        // Dessiner un palmier
+        // Dessiner des palmiers
         drawPalmTree(gc, 200, height - 200);
         drawPalmTree(gc, 600, height - 200);
 
@@ -56,6 +55,9 @@ public class JungleApplication extends Application {
             double y = height - 150 + Math.random() * 50;
             gc.fillOval(x, y, 30, 15);
         }
+
+        // Dessiner un éléphant
+        drawElephant(gc, 400, height - 200);
     }
 
     private void drawPalmTree(GraphicsContext gc, double x, double y) {
@@ -68,6 +70,29 @@ public class JungleApplication extends Application {
         for (int i = 0; i < 5; i++) {
             gc.fillArc(x - 40, y - 40, 100, 50, i * 30, 30, javafx.scene.shape.ArcType.ROUND);
         }
+    }
+
+    private void drawElephant(GraphicsContext gc, double x, double y) {
+        // Dessiner le corps de l'éléphant
+        gc.setFill(Color.GRAY);
+        gc.fillOval(x, y, 120, 60);
+
+        // Dessiner la tête
+        gc.fillOval(x - 40, y + 10, 50, 40);
+
+        // Dessiner les pattes
+        gc.fillRect(x + 10, y + 50, 20, 40);
+        gc.fillRect(x + 90, y + 50, 20, 40);
+
+        // Dessiner la trompe
+        gc.fillRect(x - 40, y + 30, 10, 30);
+
+        // Dessiner les oreilles
+        gc.fillOval(x - 50, y, 30, 30);
+
+        // Dessiner les yeux
+        gc.setFill(Color.BLACK);
+        gc.fillOval(x - 30, y + 20, 5, 5);
     }
 
     public static void main(String[] args) {
