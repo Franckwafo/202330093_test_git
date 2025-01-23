@@ -15,7 +15,7 @@ public class JungleApplication extends Application {
         // Dimensions de la fenêtre
         int width = 800;
         int height = 600;
-
+//test
         // Création de la scène et du canvas
         Group root = new Group();
         Scene scene = new Scene(root, width, height);
