@@ -59,11 +59,16 @@ public class JungleApplication extends Application {
         // Dessiner un éléphant
         drawElephant(gc, 400, height - 200);
 
+        // Ajouter des oiseaux
         for (int i = 0; i < 20; i++) {
             double x = Math.random() * width;
             double y = height - 550 + Math.random() * 50;
             drawBird(gc, x, y);
         }
+
+        // Ajouter des enfants
+        drawChild(gc, 300, height - 190);
+        drawChild(gc, 500, height - 190);
     }
 
     private void drawPalmTree(GraphicsContext gc, double x, double y) {
@@ -79,23 +84,23 @@ public class JungleApplication extends Application {
     }
 
     private void drawBird(GraphicsContext gc, double x, double y) {
-        // Body
+        // Corps
         gc.setFill(Color.ORANGE);
         gc.fillOval(x, y, 20, 10);
 
-        // Wing
+        // Aile
         gc.setFill(Color.BROWN);
         gc.fillPolygon(new double[]{x + 5, x + 20, x + 10, x}, new double[]{y, y, y - 5, y}, 4);
 
-        // Tail
+        // Queue
         gc.setFill(Color.BLUE);
         gc.fillRect(x + 10, y + 5, 5, 5);
 
-        // Head
+        // Tête
         gc.setFill(Color.YELLOW);
         gc.fillOval(x - 5, y, 10, 10);
 
-        // Eye
+        // Œil
         gc.setFill(Color.BLACK);
         gc.fillOval(x, y + 3, 2, 2);
     }
@@ -121,6 +126,32 @@ public class JungleApplication extends Application {
         // Dessiner les yeux
         gc.setFill(Color.BLACK);
         gc.fillOval(x - 30, y + 20, 5, 5);
+    }
+
+    private void drawChild(GraphicsContext gc, double x, double y) {
+        // Corps
+        gc.setFill(Color.BLUE);
+        gc.fillRect(x, y, 20, 40);
+
+        // Tête
+        gc.setFill(Color.PEACHPUFF);
+        gc.fillOval(x + 5, y - 10, 10, 10);
+
+        // Bras
+        gc.setStroke(Color.PEACHPUFF);
+        gc.setLineWidth(3);
+        gc.strokeLine(x - 5, y + 10, x - 15, y + 20); // Bras gauche
+        gc.strokeLine(x + 25, y + 10, x + 35, y + 20); // Bras droit
+
+        // Jambes
+        gc.setFill(Color.BROWN);
+        gc.fillRect(x - 5, y + 40, 10, 20);
+        gc.fillRect(x + 10, y + 40, 10, 20);
+
+        // Dessiner les yeux
+        gc.setFill(Color.BLACK);
+        gc.fillOval(x + 8, y - 5, 2, 2);
+        gc.fillOval(x + 10, y - 5, 2, 2);
     }
 
     public static void main(String[] args) {
